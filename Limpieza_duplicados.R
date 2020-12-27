@@ -52,7 +52,7 @@ main <- function(file1=file_1,file3=file_2,outputfile=file_3){
 uaq_data  = as.data.frame(fread(file1,header=T))
 nrow(uaq_data)
 blood_subset = uaq_data %>% select('Código',Sexo,'Tipo de sangre')
-colname(blood_subset)=c('Codigo','Sexo','Tipo de sangre');
+colnames(blood_subset)=c('Codigo','Sexo','Tipo de sangre');
 ##
 #Donde_indices_duplicados=grep('C7 B5_UAQ',blood_subset$'Código')
 #Valores_revision_manual=blood_subset[c(520,539),]
@@ -60,7 +60,7 @@ colname(blood_subset)=c('Codigo','Sexo','Tipo de sangre');
 uaq_data_no_dups=uaq_data[-c(110,127,138,147,158,168,280,520),]
 #nrow(uaq_data_no_dups)
 blood_subset = uaq_data_no_dups %>% select('Código',Sexo,'Tipo de sangre')
-colname(blood_subset)=c('Codigo','Sexo','Tipo de sangre');
+colnames(blood_subset)=c('Codigo','Sexo','Tipo de sangre');
 
 n1=nrow(blood_subset)
 #### TIPO O
