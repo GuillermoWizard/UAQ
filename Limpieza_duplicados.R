@@ -128,32 +128,31 @@ length(unique(phenotypes_blood_subset_separated_names$SampleID))
 ped_muestras_file = file3;
 #ped_muestras_file = "/Users/Robot/Documents/Descargas_Codigo46/Investigación/UAQ/Datos_Blood_type/SAMPLES_UAQ_sample.ped"
 ped_uaq_data  = as.data.frame(fread(ped_muestras_file,header=F))
+print(colnames(ped_uaq_data))
+
 ########################
-length(phenotypes_blood_subset_separated_names$SampleID)
-length(unique(phenotypes_blood_subset_separated_names$SampleID))
-#table(phenotypes_blood_subset_separated_names$SampleID)
+#length(phenotypes_blood_subset_separated_names$SampleID)
+#length(unique(phenotypes_blood_subset_separated_names$SampleID))
 ########################
-n2=nrow(ped_uaq_data)
-for(j in 1:n2){
-  print(paste('Sample',ped_uaq_data[j,]$V2,'Feno(O)=',ped_uaq_data[j,]$V6))
-  where=which(str_detect(ped_uaq_data[j,]$V2,phenotypes_blood_subset_separated_names$SampleID))
-  Isthis_user_onPED=any(where)
-  if(Isthis_user_onPED == 'TRUE'){
-    print(where)
-    #print(any(where))
-    print(phenotypes_blood_subset_separated_names[where,]$P_O )
-    ped_uaq_data[j,]$V6 = phenotypes_blood_subset_separated_names[where,]$P_O;
-  }
-  if(Isthis_user_onPED == 'FALSE'){
-    print(where)
-    #print(phenotypes_blood_subset_separated_names_10[where,]$P_O )
-    ped_uaq_data[j,]$V6 = -2;
-  }
-}
-print(table(ped_uaq_data$V6))
-print(ped_uaq_data)
-message("\n\n",yellow$underline$bold(paste("Writing output at:",outputfile)))
-write.table(ped_uaq_data, file = outputfile, sep = "\t",col.names = FALSE,row.names=FALSE,quote = FALSE)
+#n2=nrow(ped_uaq_data)
+#for(j in 1:n2){
+#  print(paste('Sample',ped_uaq_data[j,]$V2,'Feno(O)=',ped_uaq_data[j,]$V6))
+#  where=which(str_detect(ped_uaq_data[j,]$V2,phenotypes_blood_subset_separated_names$SampleID))
+#  Isthis_user_onPED=any(where)
+#  if(Isthis_user_onPED == 'TRUE'){
+#    print(where)
+#    print(phenotypes_blood_subset_separated_names[where,]$P_O )
+#    ped_uaq_data[j,]$V6 = phenotypes_blood_subset_separated_names[where,]$P_O;
+#  }
+#  if(Isthis_user_onPED == 'FALSE'){
+#    print(where)
+#    ped_uaq_data[j,]$V6 = -2;
+#  }
+#}
+#print(table(ped_uaq_data$V6))
+#print(ped_uaq_data)
+#message("\n\n",yellow$underline$bold(paste("Writing output at:",outputfile)))
+#write.table(ped_uaq_data, file = outputfile, sep = "\t",col.names = FALSE,row.names=FALSE,quote = FALSE)
 
 }
 
